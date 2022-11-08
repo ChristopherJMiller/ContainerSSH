@@ -6,7 +6,6 @@ RUN go build -o build/containerssh cmd/containerssh/main.go
 RUN chmod +x /go/src/github.com/janoszen/containerssh/build/containerssh
 
 FROM scratch
-COPY --from=build /lib64 /lib64
 COPY --from=build /lib /lib
 COPY --from=build /go/src/github.com/janoszen/containerssh/build/containerssh /containerssh
 CMD ["/containerssh", "--config", "/etc/containerssh/config.yaml"]
