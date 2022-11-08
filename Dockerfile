@@ -2,7 +2,7 @@ FROM golang AS build
 RUN mkdir -p /go/src/github.com/janoszen/containerssh
 WORKDIR /go/src/github.com/janoszen/containerssh/
 COPY . /go/src/github.com/janoszen/containerssh
-RUN make build
+RUN go build -o build/containerssh main.go
 RUN chmod +x /go/src/github.com/janoszen/containerssh/build/containerssh
 
 FROM scratch AS run
